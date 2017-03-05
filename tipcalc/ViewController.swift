@@ -20,6 +20,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         tipControl.addTarget(self, action: #selector(ViewController.calculateTip(_:)),for : .valueChanged)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        billField.becomeFirstResponder()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
