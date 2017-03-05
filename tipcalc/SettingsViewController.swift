@@ -10,9 +10,12 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var defaultControl: UISegmentedControl!
+    
+    @IBOutlet weak var customizeStepper: UIStepper!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
