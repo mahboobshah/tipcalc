@@ -14,11 +14,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipControl: UISegmentedControl!
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tipControl.addTarget(self, action: #selector(ViewController.calculateTip(_:)),for : .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tipControl.selectedSegmentIndex = defaults.integer(forKey: "segmentIndex")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,6 +51,7 @@ class ViewController: UIViewController {
     
         tipLabel.text = String.init(format: "$%.2f", tip)
         totalLabel.text = String.init(format: "$%.2f", total)
+        UserDefaults.standard.set(1, forKey: "Key")
     }
     
     

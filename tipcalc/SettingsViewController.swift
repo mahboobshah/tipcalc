@@ -14,9 +14,22 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var customizeStepper: UIStepper!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        defaultControl.addTarget(self, action: #selector(SettingsViewController.setDefault(_:)),for : .valueChanged)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        defaultControl.selectedSegmentIndex = defaults.integer(forKey: "segmentIndex")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        defaults.synchronize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +37,10 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func setDefault(_ sender: Any) {
+        
+        UserDefaults.standard.set(defaultControl.selectedSegmentIndex, forKey: "segmentIndex")
+    }
 
     /*
     // MARK: - Navigation
