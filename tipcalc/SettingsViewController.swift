@@ -11,8 +11,11 @@ import UIKit
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultControl: UISegmentedControl!
-    
-    @IBOutlet weak var customizeStepper: UIStepper!
+
+    @IBOutlet weak var tipStepper: UIStepper!
+    @IBAction func tipStepperAction(_ sender: Any) {
+        defaultControl.setTitle(String(Int(tipStepper.value))+"%", forSegmentAt: defaultControl.selectedSegmentIndex)
+    }
     
     let defaults = UserDefaults.standard
     
@@ -25,6 +28,7 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         defaultControl.selectedSegmentIndex = defaults.integer(forKey: "segmentIndex")
+        setTipperValue()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,7 +44,17 @@ class SettingsViewController: UIViewController {
     @IBAction func setDefault(_ sender: Any) {
         
         UserDefaults.standard.set(defaultControl.selectedSegmentIndex, forKey: "segmentIndex")
+        setTipperValue()
     }
+    
+    func setTipperValue() {
+        tipStepper.value = getSegmentValue(str: defaultControl.titleForSegment(at: defaultControl.selectedSegmentIndex)!)
+    }
+    
+    func getSegmentValue(str: String) -> Double {
+        return (Double(str.substring(to: str.index(before: str.endIndex))) ?? 0.0)
+    }
+
 
     /*
     // MARK: - Navigation

@@ -134,6 +134,9 @@
                             <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" id="CiA-Ju-baF">
                                 <rect key="frame" x="140" y="325" width="94" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="tipStepperAction:" destination="Dq1-eM-zmF" eventType="valueChanged" id="Vm9-um-VQB"/>
+                                </connections>
                             </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Customize Tip %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wRz-cG-3vO">
                                 <rect key="frame" x="125" y="296" width="128" height="21"/>
@@ -159,8 +162,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="cpE-uD-O7B"/>
                     <connections>
-                        <outlet property="customizeStepper" destination="CiA-Ju-baF" id="lmF-NH-lKP"/>
                         <outlet property="defaultControl" destination="5lX-Oq-BLT" id="zbP-iB-SEc"/>
+                        <outlet property="tipStepper" destination="CiA-Ju-baF" id="514-5t-hFX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RoR-2D-Yzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
