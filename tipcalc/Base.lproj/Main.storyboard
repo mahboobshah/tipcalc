@@ -145,13 +145,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set Default Tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jKw-X9-RGO">
-                                <rect key="frame" x="131" y="204" width="114" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select Default Tip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jKw-X9-RGO">
+                                <rect key="frame" x="120" y="204" width="137" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Hi-TZ-WuW">
+                                <rect key="frame" x="131" y="570" width="113" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetAction:" destination="Dq1-eM-zmF" eventType="touchUpInside" id="3Hm-1e-ZRt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -163,6 +172,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="cpE-uD-O7B"/>
                     <connections>
                         <outlet property="defaultControl" destination="5lX-Oq-BLT" id="zbP-iB-SEc"/>
+                        <outlet property="resetButton" destination="1Hi-TZ-WuW" id="Vk5-Jf-SmW"/>
                         <outlet property="tipStepper" destination="CiA-Ju-baF" id="514-5t-hFX"/>
                     </connections>
                 </viewController>

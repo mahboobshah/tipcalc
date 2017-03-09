@@ -25,6 +25,10 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tipControl.selectedSegmentIndex = defaults.integer(forKey: "segmentIndex")
+        tipControl.setTitle(defaults.string(forKey: "segmentTitle0") ?? "18%", forSegmentAt: 0)
+        tipControl.setTitle(defaults.string(forKey: "segmentTitle1") ?? "20%", forSegmentAt: 1)
+        tipControl.setTitle(defaults.string(forKey: "segmentTitle2") ?? "25%", forSegmentAt: 2)
+        calculateTip(AnyObject.self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,15 +47,19 @@ class ViewController: UIViewController {
     
     @IBAction func calculateTip(_ sender: Any) {
         
-        let tipPercentages = [0.18,0.2,0.25]
+        // let tipPercentages = [0.18,0.2,0.25]
         
         let bill = Double(billField.text!) ?? 0
-        let tip = bill * tipPercentages[tipControl.selectedSegmentIndex]
+        let tip = bill * getSegmentValue(str: tipControl.titleForSegment(at: tipControl.selectedSegmentIndex)!) / 100
         let total = bill + tip
     
         tipLabel.text = String.init(format: "$%.2f", tip)
         totalLabel.text = String.init(format: "$%.2f", total)
         UserDefaults.standard.set(1, forKey: "Key")
+    }
+    
+    func getSegmentValue(str: String) -> Double {
+        return (Double(str.substring(to: str.index(before: str.endIndex))) ?? 0.0)
     }
     
     

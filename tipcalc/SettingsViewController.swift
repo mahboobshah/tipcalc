@@ -12,9 +12,14 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var defaultControl: UISegmentedControl!
 
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var tipStepper: UIStepper!
     @IBAction func tipStepperAction(_ sender: Any) {
         defaultControl.setTitle(String(Int(tipStepper.value))+"%", forSegmentAt: defaultControl.selectedSegmentIndex)
+    }
+    
+    @IBAction func resetAction(_ sender: Any) {
+        resetDefaults()
     }
     
     let defaults = UserDefaults.standard
@@ -28,12 +33,18 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         defaultControl.selectedSegmentIndex = defaults.integer(forKey: "segmentIndex")
+        defaultControl.setTitle(defaults.string(forKey: "segmentTitle0") ?? "18%", forSegmentAt: 0)
+        defaultControl.setTitle(defaults.string(forKey: "segmentTitle1") ?? "20%", forSegmentAt: 1)
+        defaultControl.setTitle(defaults.string(forKey: "segmentTitle2") ?? "25%", forSegmentAt: 2)
         setTipperValue()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        defaults.synchronize()
+        UserDefaults.standard.set(defaultControl.selectedSegmentIndex, forKey: "segmentIndex")
+        UserDefaults.standard.set(defaultControl.titleForSegment(at: 0), forKey: "segmentTitle0")
+        UserDefaults.standard.set(defaultControl.titleForSegment(at: 1), forKey: "segmentTitle1")
+        UserDefaults.standard.set(defaultControl.titleForSegment(at: 2), forKey: "segmentTitle2")
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,7 +54,6 @@ class SettingsViewController: UIViewController {
     
     @IBAction func setDefault(_ sender: Any) {
         
-        UserDefaults.standard.set(defaultControl.selectedSegmentIndex, forKey: "segmentIndex")
         setTipperValue()
     }
     
@@ -53,6 +63,14 @@ class SettingsViewController: UIViewController {
     
     func getSegmentValue(str: String) -> Double {
         return (Double(str.substring(to: str.index(before: str.endIndex))) ?? 0.0)
+    }
+    
+    func resetDefaults() {
+        defaultControl.setTitle("18%", forSegmentAt: 0)
+        defaultControl.setTitle("20%", forSegmentAt: 1)
+        defaultControl.setTitle("25%", forSegmentAt: 2)
+        defaultControl.selectedSegmentIndex = 0
+        setTipperValue()
     }
 
 
