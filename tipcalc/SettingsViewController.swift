@@ -41,10 +41,11 @@ class SettingsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UserDefaults.standard.set(defaultControl.selectedSegmentIndex, forKey: "segmentIndex")
-        UserDefaults.standard.set(defaultControl.titleForSegment(at: 0), forKey: "segmentTitle0")
-        UserDefaults.standard.set(defaultControl.titleForSegment(at: 1), forKey: "segmentTitle1")
-        UserDefaults.standard.set(defaultControl.titleForSegment(at: 2), forKey: "segmentTitle2")
+        defaults.set(defaultControl.selectedSegmentIndex, forKey: "segmentIndex")
+        defaults.set(defaultControl.titleForSegment(at: 0), forKey: "segmentTitle0")
+        defaults.set(defaultControl.titleForSegment(at: 1), forKey: "segmentTitle1")
+        defaults.set(defaultControl.titleForSegment(at: 2), forKey: "segmentTitle2")
+        defaults.synchronize()
     }
 
     override func didReceiveMemoryWarning() {

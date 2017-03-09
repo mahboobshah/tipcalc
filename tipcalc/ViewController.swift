@@ -55,7 +55,6 @@ class ViewController: UIViewController {
     
         tipLabel.text = String.init(format: "$%.2f", tip)
         totalLabel.text = String.init(format: "$%.2f", total)
-        UserDefaults.standard.set(1, forKey: "Key")
     }
     
     func getSegmentValue(str: String) -> Double {
