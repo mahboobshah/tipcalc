@@ -20,20 +20,26 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         tipControl.addTarget(self, action: #selector(ViewController.calculateTip(_:)),for : .valueChanged)
+        billField.becomeFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         tipControl.selectedSegmentIndex = defaults.integer(forKey: "segmentIndex")
-        tipControl.setTitle(defaults.string(forKey: "segmentTitle0") ?? "18%", forSegmentAt: 0)
-        tipControl.setTitle(defaults.string(forKey: "segmentTitle1") ?? "20%", forSegmentAt: 1)
-        tipControl.setTitle(defaults.string(forKey: "segmentTitle2") ?? "25%", forSegmentAt: 2)
+        tipControl.setTitle(defaults.string(forKey: "segmentTitle0") ?? "10%", forSegmentAt: 0)
+        tipControl.setTitle(defaults.string(forKey: "segmentTitle1") ?? "15%", forSegmentAt: 1)
+        tipControl.setTitle(defaults.string(forKey: "segmentTitle2") ?? "20%", forSegmentAt: 2)
+        billField.text = defaults.string(forKey: "bill")
         calculateTip(AnyObject.self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        defaults.set(billField.text, forKey: "bill")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        billField.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {

@@ -33,9 +33,9 @@ class SettingsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         defaultControl.selectedSegmentIndex = defaults.integer(forKey: "segmentIndex")
-        defaultControl.setTitle(defaults.string(forKey: "segmentTitle0") ?? "18%", forSegmentAt: 0)
-        defaultControl.setTitle(defaults.string(forKey: "segmentTitle1") ?? "20%", forSegmentAt: 1)
-        defaultControl.setTitle(defaults.string(forKey: "segmentTitle2") ?? "25%", forSegmentAt: 2)
+        defaultControl.setTitle(defaults.string(forKey: "segmentTitle0") ?? "10%", forSegmentAt: 0)
+        defaultControl.setTitle(defaults.string(forKey: "segmentTitle1") ?? "15%", forSegmentAt: 1)
+        defaultControl.setTitle(defaults.string(forKey: "segmentTitle2") ?? "20%", forSegmentAt: 2)
         setTipperValue()
     }
     
@@ -67,9 +67,9 @@ class SettingsViewController: UIViewController {
     }
     
     func resetDefaults() {
-        defaultControl.setTitle("18%", forSegmentAt: 0)
-        defaultControl.setTitle("20%", forSegmentAt: 1)
-        defaultControl.setTitle("25%", forSegmentAt: 2)
+        defaultControl.setTitle("10%", forSegmentAt: 0)
+        defaultControl.setTitle("15%", forSegmentAt: 1)
+        defaultControl.setTitle("20%", forSegmentAt: 2)
         defaultControl.selectedSegmentIndex = 0
         setTipperValue()
     }
